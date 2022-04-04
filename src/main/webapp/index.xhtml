@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Teams:</h2>
+    <ol>
+        <ui:repeat value="#{barns.allBarns}" var="barn">
+            <li>#{barn.name}</li>
+            <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
+                <ui:repeat value="#{barn.animals}" var="animal">
+                    <li>#{animal.name}</li>
+                </ui:repeat>
+            </ol>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{barns.barnToCreate.name}" required="true" />
+        <h:commandButton value="Add new barn" actionListener="#{barns.createBarn}" action="index?faces-redirect=true"/>
+    </h:form>
+    <h:link outcome="barns" value="MyBatis implementation"/>
+</h:body>
+</html>
