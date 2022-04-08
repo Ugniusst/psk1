@@ -11,9 +11,9 @@
     <id column="ID" jdbcType="BIGINT" property="id" />
     <result column="ANIMALNAME" jdbcType="VARCHAR" property="animalname" />
     <result column="BARN_ID" jdbcType="BIGINT" property="barnId" />
-    <association property="barn"
-                 columnPrefix="barn_"
-                 resultMap="com.example.psk1.mybatis.dao.BarnMapper.BaseResultMap"/>
+<!--    <association property="barn"-->
+<!--                 columnPrefix="barn_"-->
+<!--                 resultMap="com.example.psk1.mybatis.dao.BarnMapper.BaseResultMap"/>-->
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--

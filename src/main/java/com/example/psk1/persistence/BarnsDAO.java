@@ -25,7 +25,11 @@ public class BarnsDAO {
         this.em.persist(team);
     }
 
-    public Barn findOne(Integer id) {
+    public Barn findOne(Long id) {
         return em.find(Barn.class, id);
+    }
+
+    public Barn update(Barn barn){
+        return em.merge(barn);
     }
 }

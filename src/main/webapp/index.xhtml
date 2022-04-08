@@ -3,10 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
 >
 <h:head/>
 <h:body>
-    <h2>Teams:</h2>
+    <h2>Barns:</h2>
     <ol>
         <ui:repeat value="#{barns.allBarns}" var="barn">
             <li>#{barn.name}</li>
@@ -14,12 +16,25 @@
                 <ui:repeat value="#{barn.animals}" var="animal">
                     <li>#{animal.name}</li>
                 </ui:repeat>
+                <ui:repeat  value="#{barn.workers}" var="worker">
+                    <li style="list-style-type: square;">#{worker.name}</li>
+                </ui:repeat>
             </ol>
         </ui:repeat>
     </ol>
     <h:form>
         <h:inputText value="#{barns.barnToCreate.name}" required="true" />
         <h:commandButton value="Add new barn" actionListener="#{barns.createBarn}" action="index?faces-redirect=true"/>
+    </h:form>
+    <h:form>
+        <h:inputText a:placeholder="animal name" value="#{animalsForBarn.animalToCreate.name}" required="true" />
+        <h:inputText a:placeholder="animal id" value="#{animalsForBarn.animalToCreate.barn.id}" required="true" />
+        <h:commandButton value="Add new animal" actionListener="#{animalsForBarn.createAnimal}" action="index?faces-redirect=true"/>
+    </h:form>
+    <h:form>
+        <h:inputText a:placeholder="worker name" value="#{workersForBarn.workerToCreate.name}" required="true" />
+        <h:inputText a:placeholder="barn id" value="#{workersForBarn.barn.id}" required="true" />
+        <h:commandButton value="Add new worker" actionListener="#{workersForBarn.createWorker}" action="index?faces-redirect=true"/>
     </h:form>
     <h:link outcome="barns" value="MyBatis implementation"/>
 </h:body>
