@@ -11,10 +11,11 @@
     <h2>Barns:</h2>
     <ol>
         <ui:repeat value="#{barns.allBarns}" var="barn">
-            <li>#{barn.name}</li>
+            <li>#{barn.name} (#{barn.animals.size()})</li>
             <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
                 <ui:repeat value="#{barn.animals}" var="animal">
                     <li>#{animal.name}</li>
+
                 </ui:repeat>
                 <ui:repeat  value="#{barn.workers}" var="worker">
                     <li style="list-style-type: square;">#{worker.name}</li>
