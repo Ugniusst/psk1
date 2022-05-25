@@ -1,19 +1,22 @@
 package com.example.psk1.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Worker {
-    private Long id;
+    private Integer id;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,4 +41,9 @@ public class Worker {
     public void setBarns(List<Barn> barns) {
         this.barns = barns;
     }
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    @Getter @Setter
+    private Integer version;
 }

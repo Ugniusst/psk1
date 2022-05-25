@@ -25,7 +25,7 @@ public class BarnsDAO {
         this.em.persist(team);
     }
 
-    public Barn findOne(Long id) {
+    public Barn findOne(Integer id) {
         return em.find(Barn.class, id);
     }
 

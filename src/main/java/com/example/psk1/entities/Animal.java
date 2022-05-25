@@ -1,18 +1,23 @@
 package com.example.psk1.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Table
+
 public class Animal {
-    private Long id;
+    private Integer id;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,4 +42,10 @@ public class Animal {
     public void setBarn(Barn barn) {
         this.barn = barn;
     }
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    @Getter @Setter
+    private Integer version;
+
 }

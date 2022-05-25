@@ -15,15 +15,15 @@ import java.util.Objects;
 @Table(name = "BARN")
 @Getter @Setter
 public class Barn {
-    private Long id;
+    private Integer id;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -73,4 +73,8 @@ public class Barn {
 
         return Objects.hash(name);
     }
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 }

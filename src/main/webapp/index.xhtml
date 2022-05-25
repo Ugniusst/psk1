@@ -14,7 +14,9 @@
             <li>#{barn.name} (#{barn.animals.size()})</li>
             <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
                 <ui:repeat value="#{barn.animals}" var="animal">
-                    <li>#{animal.name}</li>
+                    <li>
+                        <h:link value="#{animal.name}" outcome="animalDetails?animalId=#{animal.id}" />
+                    </li>
 
                 </ui:repeat>
                 <ui:repeat  value="#{barn.workers}" var="worker">
