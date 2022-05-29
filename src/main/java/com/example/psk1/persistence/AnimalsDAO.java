@@ -20,6 +20,8 @@ public class AnimalsDAO {
     }
 
     public Animal update(Animal animal){
-        return em.merge(animal);
+        Animal a = em.merge(animal);
+        em.flush();
+        return a;
     }
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +15,7 @@ import java.util.Objects;
 })
 @Table(name = "BARN")
 @Getter @Setter
-public class Barn {
+public class Barn implements Serializable {
     private Integer id;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -76,5 +77,5 @@ public class Barn {
 
     @Version
     @Column(name = "OPT_LOCK_VERSION")
-    private Integer version;
+    private int version;
 }

@@ -4,11 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table
-
-public class Animal {
+public class Animal implements Serializable {
     private Integer id;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,9 +43,20 @@ public class Animal {
         this.barn = barn;
     }
 
-    @Version
-    @Column(name = "OPT_LOCK_VERSION")
     @Getter @Setter
+    @Version
+    @Column(name = "optLockVersion",nullable = false)
+    private Integer version1;
+
+    @Column(name = "optLockVersion",nullable = false)
+    @Version
     private Integer version;
 
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
 }

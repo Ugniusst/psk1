@@ -35,11 +35,12 @@ public class UpdateAnimalDetails implements Serializable {
         this.animal = animalsDAO.findOne(animalId);
     }
 
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
+    @Transactional
     @LoggedInvocation
     public String updateAnimalName() {
         try{
             animalsDAO.update(this.animal);
+
         } catch (OptimisticLockException e) {
             return "/animalDetails.xhtml?faces-redirect=true&animalId=" + this.animal.getId() + "&error=optimistic-lock-exception";
         }
